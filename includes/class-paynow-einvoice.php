@@ -321,7 +321,7 @@ class Paynow_Einvoice {
 
 		if ( check_ajax_referer( 'paynow_cancel_einvoice', '_wpnonce', false ) ) {
 
-			$order_id = $_GET['order_id'];
+			$order_id = $_GET[ 'order_id' ];
 			$order = wc_get_order( $order_id );
 
 			//已發行
@@ -335,12 +335,12 @@ class Paynow_Einvoice {
 
 			$result = $this->cancel_invoice( $invoice_no );
 
-			if( count($result) > 1 ){
-				$order->add_order_note( __('Cancel E-Invoice Successfully:', 'paynow-einvoice').$invoice_no);
-				wp_send_json_success(array('order_id'=>$order_id));
+			if ( strpos( $result, 'S' ) === 0 ) {
+				$order->add_order_note( __( 'Cancel E-Invoice Successfully:', 'paynow-einvoice') . $invoice_no );
+				wp_send_json_success( array( 'order_id' => $order_id ) );
 			} else {
-				$order->add_order_note( __('Cancel E-Invoice Failed:', 'paynow-einvoice').$result[0]);
-				wp_send_json_error( array( 'message'=> __('Cancel E-Invoice Failed:', 'paynow-einvoice') . $result[0] ));
+				$order->add_order_note( __( 'Cancel E-Invoice Failed:', 'paynow-einvoice' ) . $result );
+				wp_send_json_error( array( 'message'=> __( 'Cancel E-Invoice Failed:', 'paynow-einvoice' ) . $result ) );
 			}
 
 		} else {
@@ -540,16 +540,10 @@ class Paynow_Einvoice {
 		);
 		$this->pn_write_log($param_ary);
 
-		$aryResult = $client->__soapCall( 'CancelInvoice_I',array('parameters' => $param_ary ) );
-		$this->pn_write_log($aryResult);
+		$aryResult = $client->__soapCall( 'CancelInvoice_I', array( 'parameters' => $param_ary ) );
+		$this->pn_write_log( $aryResult );
 		$result = $aryResult->CancelInvoice_IResult;
-		if ($result === 'S') {
-			// $response = explode(',', $result);
-			$response = $result;
-		} else {
-			$response = array($result);
-		}
-		return $response;
+		return $result;
 
 	}
 

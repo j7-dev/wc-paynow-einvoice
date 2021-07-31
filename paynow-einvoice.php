@@ -16,7 +16,7 @@
  * Plugin Name:       PayNow 電子發票模組
  * Plugin URI:        https://paynow.yangsheep.art
  * Description:       台灣立吉富PayNow 電子發票模組 for WooCommerce
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            PayNow
  * Author URI:        https://www.paynow.com.tw/
  * License:           GPL-2.0+
