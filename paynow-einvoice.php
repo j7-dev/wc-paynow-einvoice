@@ -13,10 +13,10 @@
  * @package           Paynow_Einvoice
  *
  * @wordpress-plugin
- * Plugin Name:       PayNow 電子發票模組
+ * Plugin Name:       PayNow E-Invoice
  * Plugin URI:        https://paynow.yangsheep.art
- * Description:       台灣立吉富PayNow 電子發票模組 for WooCommerce
- * Version:           1.0.1
+ * Description:       PayNow E-Invoice for WooCommerce
+ * Version:           1.0.2
  * Author:            PayNow
  * Author URI:        https://www.paynow.com.tw/
  * License:           GPL-2.0+
@@ -39,7 +39,7 @@ define( 'PAYNOW_EINVOICE_BASENAME', plugin_basename( __FILE__ ) );
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PAYNOW_EINVOICE_VERSION', '1.0.0' );
+define( 'PAYNOW_EINVOICE_VERSION', '1.0.2' );
 
 /**
  * The code that runs during plugin activation.
