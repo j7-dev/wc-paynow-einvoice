@@ -36,12 +36,18 @@
     });
 
     function change_fields( issue_type, carrier_type ) {
-		console.log(issue_type, carrier_type);
+
         var $c_title     = $('#paynow-ei-company-title');
         var $ubn         = $('#paynow-ei-ubn');
         var $carrier_num = $('#paynow-ei-carrier-num');
         var $donate_org  = $('#paynow-ei-org');
 
+		if (carrier_type == 'ei_carrier_type_no_carrier') {
+			$c_title.hide();
+			$ubn.hide();
+			$carrier_num.hide();
+			$donate_org.hide();
+		}
 
         if( carrier_type == 'ei_carrier_type_ubn' ) {
             $c_title.show();

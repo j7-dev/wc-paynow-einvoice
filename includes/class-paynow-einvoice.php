@@ -392,6 +392,10 @@ class Paynow_Einvoice {
 					$carrier_type = '3J0002';//通用載具
 					$carrier_id1 = get_post_meta( $order->get_id(), '_paynow_ei_carrier_num', true );
 					$carrier_id2 = $carrier_id1;
+				} elseif ( $selected_carrier_type == 'ei_carrier_type_no_carrier') {
+					$carrier_type = '';
+					$carrier_id1  = '';
+					$carrier_id2  = '';
 				}
 			} else {
 				//donate
@@ -570,7 +574,8 @@ class Paynow_Einvoice {
 		}
 
 		if ( $issue_type == PayNow_EInvoice_Issue_Type::B2C ) {
-			echo '<div>'.__( 'Carrier Number', 'paynow-einvoice' ).'：'.get_post_meta( $post->ID, '_paynow_ei_carrier_num', true).'</div>';
+			$carrier_num = ( 'ei_carrier_type_no_carrier' == $carrier_type )? __('No Carrier', 'paynow-einvoice') : get_post_meta( $order->get_id(), '_paynow_ei_carrier_num', true);
+			echo '<div>'.__( 'Carrier Number', 'paynow-einvoice' ).'：'. $carrier_num .'</div>';
 		}
 
 		if ( $issue_type == PayNow_EInvoice_Issue_Type::DONATE ) {
@@ -627,8 +632,9 @@ class Paynow_Einvoice {
 		}
 
 		if ( $issue_type == PayNow_EInvoice_Issue_Type::B2C) {
+			$carrier_num = ( 'ei_carrier_type_no_carrier' == $carrier_type )? __('No Carrier', 'paynow-einvoice') : get_post_meta( $order->get_id(), '_paynow_ei_carrier_num', true);
 			echo '<tr><td><strong>'.__( 'Carrier Number', 'paynow-einvoice' ).'</strong></td>';
-			echo '<td>' . get_post_meta( $order->get_id(), '_paynow_ei_carrier_num', true) . '</td></tr>';
+			echo '<td>' . $carrier_num . '</td></tr>';
 		}
 
 		if ( $issue_type == PayNow_EInvoice_Issue_Type::DONATE ) {
@@ -669,7 +675,8 @@ class Paynow_Einvoice {
 			}
 		} elseif ($issue_type == 'b2c') {
 			$carrier_num = $_POST['paynow_ei_carrier_num'];
-			if (!$carrier_num) {
+			$carrier_type = $_POST['paynow_ei_carrier_type'];
+			if (!$carrier_num && 'ei_carrier_type_no_carrier' !== $carrier_type ) {
 				wc_add_notice( __('Please input the carrier number', 'paynow-einvoice'), 'error' );
 			}
 		}
@@ -868,17 +875,17 @@ class Paynow_Einvoice {
 
 	//結帳顯示的選項
 	public function paynow_get_carrier_type() {
-		$carriers = array();
+		$carriers = array( 'ei_carrier_type_no_carrier' => __( 'No Carrier', 'paynow-einvoice' ) );
 
-		if (get_option( 'wc_settings_tab_carrier_type_mobile_code') == 'yes') {
+		if ( get_option( 'wc_settings_tab_carrier_type_mobile_code') == 'yes' ) {
 			$carriers['ei_carrier_type_mobile_code'] = __('Mobile Code', 'paynow-einvoice');
 		}
 
-		if (get_option( 'wc_settings_tab_carrier_type_cdc_code' ) == 'yes') {
+		if ( get_option( 'wc_settings_tab_carrier_type_cdc_code' ) == 'yes' ) {
 			$carriers['ei_carrier_type_cdc_code'] = __( 'Citizen Digital Certificate', 'paynow-einvoice' );
 		}
 
-		if (get_option( 'wc_settings_tab_carrier_type_easycard_code' ) == 'yes') {
+		if ( get_option( 'wc_settings_tab_carrier_type_easycard_code' ) == 'yes' ) {
 			$carriers['ei_carrier_type_easycard_code'] = __('Easy Card', 'paynow-einvoice');
 		}
 

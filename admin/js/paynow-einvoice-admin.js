@@ -44,7 +44,6 @@
 
 	$(document).on('click', 'a.button.issue_einvoice', function (e) {
 		e.preventDefault();
-		console.log('paynow issue einvoice');
 
 		$('#paynow-ei-meta-boxes').block({
 			message: null,
