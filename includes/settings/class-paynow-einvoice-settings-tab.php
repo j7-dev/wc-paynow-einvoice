@@ -6,20 +6,40 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
 
+	private static $sections;
 
     public function __construct() {
         $this->id    = 'paynow';
-        // $this->label = __( 'PayNow 電子發票', 'paynow-einvoice' );
+        $this->label = __( 'PayNow', 'paynow-einvoice' );
 
+		self::$sections = array(
+			'einvoice' => __( 'E-Invoice Settings', 'paynow-einvoice' ),
+		);
 
 		add_action( 'woocommerce_settings_' . $this->id, array( $this, 'output' ) );
 		add_action( 'woocommerce_settings_save_' . $this->id, array( $this, 'save' ) );
 
-		add_action( 'woocommerce_sections_' . $this->id, array( $this, 'output_sections' ) );
+		add_action( 'admin_init', array( $this, 'paynow_einvoice_redirect_default_tab' ) );
+
+		add_filter( 'woocommerce_get_sections_' . $this->id, array( $this, 'paynow_einvoice_sections' ), 30, 1 );
 
 		parent::__construct();
 
     }
+
+	/**
+	 * Add einvoice sections tab
+	 *
+	 * @param array $sections The settings section.
+	 * @return array
+	 */
+	public function paynow_einvoice_sections( $sections ) {
+
+		if ( is_array( $sections ) && ! array_key_exists( 'einvoice', $sections ) ) {
+			$sections['einvoice'] = __( 'E-Invoice Settings', 'paynow-einvoice' );
+		}
+		return $sections;
+	}
 
 	/**
 	 * Get setting sections
@@ -27,11 +47,11 @@ class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
 	 * @return array
 	 */
 	public function get_sections() {
-		$sections = array(
-			'einvoice'     => __( '電子發票設定', 'paynow' ),
-		);
+		if ( ! is_plugin_active( 'paynow-payment/paynow-payment.php' ) && ! is_plugin_active( 'paynow-shipping/paynow-shipping.php' ) ) {
+			$sections = self::$sections;
+			return apply_filters( 'woocommerce_get_sections_' . $this->id, $sections );
+		}
 
-		return apply_filters( 'woocommerce_get_sections_' . $this->id, $sections );
 	}
 
     private static function ww_get_order_status() {
@@ -171,11 +191,42 @@ class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
         return apply_filters( 'wc_settings_tab_paynow_einvoice_settings', $settings );
     }
 
+	/**
+	 * Redirect to shipping tab if paynow payment plugin is not activated.
+	 *
+	 * @return void
+	 */
+	public function paynow_einvoice_redirect_default_tab() {
+
+		global $pagenow;
+
+		if ( 'admin.php' !== $pagenow ) {
+			return;
+		}
+
+		if ( is_plugin_active( 'paynow-payment/paynow-payment.php' ) || is_plugin_active( 'paynow-shipping/paynow-shipping.php' ) ) {
+			return;
+		}
+
+		$page    = wp_unslash( $_GET['page'] );
+		$tab     = wp_unslash( $_GET['tab'] );
+		$section = wp_unslash( $_GET['section'] );
+
+		if ( 'wc-settings' === $page && 'paynow' === $tab ) {
+
+			if ( empty( $section ) ) {
+				wp_redirect( admin_url( 'admin.php?page=wc-settings&tab=paynow&section=einvoice' ) );
+				exit;
+			}
+		}
+
+	}
+
 	public function output() {
 
 		global $current_section;
 
-		if ($current_section !== 'einvoice') return;
+		if ( $current_section !== 'einvoice' ) return;
 
 		$settings = $this->get_settings( $current_section );
 		WC_Admin_Settings::output_fields( $settings );
