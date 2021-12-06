@@ -16,7 +16,7 @@
  * Plugin Name:       PayNow E-Invoice
  * Plugin URI:        https://paynow.yangsheep.art
  * Description:       PayNow E-Invoice for WooCommerce
- * Version:           1.0.3
+ * Version:           1.0.4
  * Author:            PayNow
  * Author URI:        https://www.paynow.com.tw/
  * License:           GPL-2.0+
@@ -39,7 +39,7 @@ define( 'PAYNOW_EINVOICE_BASENAME', plugin_basename( __FILE__ ) );
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PAYNOW_EINVOICE_VERSION', '1.0.3' );
+define( 'PAYNOW_EINVOICE_VERSION', '1.0.4' );
 
 /**
  * The code that runs during plugin activation.
