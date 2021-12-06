@@ -574,7 +574,7 @@ class Paynow_Einvoice {
 		}
 
 		if ( $issue_type == PayNow_EInvoice_Issue_Type::B2C ) {
-			$carrier_num = ( 'ei_carrier_type_no_carrier' == $carrier_type )? __('No Carrier', 'paynow-einvoice') : get_post_meta( $order->get_id(), '_paynow_ei_carrier_num', true);
+			$carrier_num = ( 'ei_carrier_type_no_carrier' == $carrier_type )? __('No Carrier', 'paynow-einvoice') : get_post_meta( $post->ID, '_paynow_ei_carrier_num', true);
 			echo '<div>'.__( 'Carrier Number', 'paynow-einvoice' ).'：'. $carrier_num .'</div>';
 		}
 
