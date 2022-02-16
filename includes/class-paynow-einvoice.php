@@ -88,7 +88,7 @@ class Paynow_Einvoice {
 		$this->plugin_name = 'paynow-einvoice';
 
 		$this->sandbox = ( get_option( 'wc_settings_tab_paynow_einvoice_sandbox') == 'yes' )? true : false;
-		$this->log_enabled  =  ( 'yes' === get_option( 'paynow_einvoice_log_enabled', 'no' ) )? true : false;
+		$this->log_enabled  =  'yes' === get_option( 'paynow_einvoice_debug_log_enabled', 'no' );
 
 		$this->mem_cid      = get_option('wc_settings_tab_mem_cid');
 		$this->mem_password = get_option('wc_settings_tab_mem_password');
@@ -104,7 +104,7 @@ class Paynow_Einvoice {
 
 		if (  get_option( 'wc_settings_tab_active_paynow_einvoice' ) === 'yes' ) {
 
-			if (empty($this->mem_cid) || empty($this->mem_password)) {
+			if ( empty( $this->mem_cid ) || empty( $this->mem_password ) ) {
 				$this->loader->add_action( 'admin_notices',   $this, 'paynow_unset_credential_wanrning' );
 			}
 
@@ -166,9 +166,8 @@ class Paynow_Einvoice {
 		}
 
 		$result  = $this->issue_einvoice( array( $order_id ) );
-		$this->pn_write_log($result);
 
-		if( count($result) > 1 ){
+		if( count( $result ) > 1 ){
 
 			update_post_meta( $order_id, '_paynow_ei_issued', 'yes');
 
@@ -202,12 +201,10 @@ class Paynow_Einvoice {
 			}
 
 			$result  = $this->issue_einvoice( array( $order_id ) );
-			$this->pn_write_log('===>ajax issue einvoice');
-			$this->pn_write_log($result);
+			$this->log('Issue einvoice for order id:' . $order_id . ', result:'. wc_print_r( $result, true ) );
 
-			if( count($result) > 1 ) {
+			if ( count( $result ) > 1 ) {
 
-				$this->log( 'issue invoice success' );
 				update_post_meta( $order_id, '_paynow_ei_issued', 'yes');
 				//save einvoice data to order post meta
 
@@ -220,9 +217,9 @@ class Paynow_Einvoice {
 
 			} else {
 
-				$this->log('issue invoice failed' );
-				$this->log( $result[0] );
 				$order->add_order_note( __('E-Invoice issued failed').', '.$result[0] );
+				$this->log('issue invoice failed, order id:' . $order_id );
+				$this->log( $result[0] );
 
 				wp_send_json_error( array( 'message' => __( 'E-Invoice issued failed.', 'paynow-einvoice' ). $result[0] ));
 
@@ -265,10 +262,9 @@ class Paynow_Einvoice {
 		if (count( $issued_orders ) > 0) {
 
 			$result = $this->issue_einvoice( $issued_orders );
-			$this->pn_write_log('====>bulk issue invoice');
-			$this->pn_write_log($result);
+			$this->log('Issue einvoice for order id:' . wc_print_r( $issued_orders, true) . ', result:'. wc_print_r( $result, true ) );
 
-			if( count($result) > 1 ){
+			if ( count( $result ) > 1 ){
 
 				$issued_orders = $result['invoices'];
 
@@ -364,7 +360,6 @@ class Paynow_Einvoice {
 			}
 
 			$issue_type  = get_post_meta( $order->get_id(), '_paynow_ei_issue_type', true );
-			$this->pn_write_log('發行方式：'.$issue_type);
 
 			//統一編號，若為個人為空
 			$carrier_type = '';//載具類型
@@ -382,17 +377,22 @@ class Paynow_Einvoice {
 
 				$ubn = '';
 				$buyer_name = $order->get_billing_last_name().$order->get_billing_first_name();
+				$carrier_num = get_post_meta( $order->get_id(), '_paynow_ei_carrier_num', true );
 
 				$selected_carrier_type = get_post_meta( $order->get_id(), '_paynow_ei_carrier_type', true);
-				if ($selected_carrier_type == 'ei_carrier_type_easycard_code') {
+				if ( $selected_carrier_type == 'ei_carrier_type_easycard_code' ) {
 					$carrier_type = '1K0001';//悠遊卡
-				} elseif ($selected_carrier_type == 'ei_carrier_type_cdc_code') {
+					$carrier_id1 = '';
+					$carrier_id2 = $carrier_num;
+				} elseif ( $selected_carrier_type == 'ei_carrier_type_cdc_code' ) {
 					$carrier_type = 'CQ0001';//自然人憑證
-				} elseif ($selected_carrier_type == 'ei_carrier_type_mobile_code') {
+					$carrier_id1 = $carrier_num;
+					$carrier_id2 = $carrier_num;
+				} elseif ( $selected_carrier_type == 'ei_carrier_type_mobile_code' ) {
 					$carrier_type = '3J0002';//通用載具
-					$carrier_id1 = get_post_meta( $order->get_id(), '_paynow_ei_carrier_num', true );
-					$carrier_id2 = $carrier_id1;
-				} elseif ( $selected_carrier_type == 'ei_carrier_type_no_carrier') {
+					$carrier_id1 = $carrier_num;
+					$carrier_id2 = $carrier_num;
+				} elseif ( $selected_carrier_type == 'ei_carrier_type_no_carrier' ) {
 					$carrier_type = '';
 					$carrier_id1  = '';
 					$carrier_id2  = '';
@@ -414,11 +414,8 @@ class Paynow_Einvoice {
 				$tax_rate = 0;
 			}
 
-
-
 			$comment      = '';
 			$comment      = apply_filters( 'paynow_ei_comment', $comment );//發票備註，字數限 25 字。
-
 
 			$order_items = $order->get_items( array('line_item', 'fee', 'shipping') );
 			if ( !is_wp_error( $order_items ) ) {
@@ -436,7 +433,7 @@ class Paynow_Einvoice {
 
 						'CarrierType'		=>  "'".$carrier_type,
 						'CarrierID_1'		=>  "'".$carrier_id1,
-						'CarrierID_2'		=>  "'".$carrier_id1,//發票隱碼
+						'CarrierID_2'		=>  "'".$carrier_id2,//載具隱碼
 						'LoveCode'			=>  "'".$love_code,
 
 						'Description'		=>  "'".$order_item->get_name(),
@@ -455,12 +452,8 @@ class Paynow_Einvoice {
 
 		}//endforeach
 
-
-		$this->pn_write_log( '===>ei_datas' );
-		$this->pn_write_log( $ei_datas );
-
+		$this->log('Issue einvoice data:' . wc_print_r( $ei_datas, true ) );
 		$result = $this->do_issue( $ei_datas );
-		$this->pn_write_log($result);
 
 		return $result;
 
@@ -487,20 +480,19 @@ class Paynow_Einvoice {
 		$client = new SoapClient( $this->api_url.'/PayNowEInvoice.asmx?wsdl', $options );
 
 		$str = $this->build_invoice_str( $ei_datas );
-		$this->pn_write_log('csvStr:'.$str);
+		$this->log( 'build invoice string: ' . $str );
 
-		$encoded_s = urlencode(base64_encode($str));
+		$encoded_s = urlencode( base64_encode( $str ) );
 
 		$param_ary =  array(
 			'mem_cid'=> $this->mem_cid,
 			'mem_password'=> $this->mem_password,
 			'csvStr'=>  $encoded_s
 		);
+		$this->log( 'Issue einvoice parameters: ' . wc_print_r( $param_ary, true ) );
 
-		$this->pn_write_log($param_ary);
-		$aryResult = $client->__soapCall('UploadInvoice_Patch',array('parameters' => $param_ary) );
-		$this->pn_write_log('====>UploadInvoice_Patch');
-		$this->pn_write_log($aryResult);
+		$aryResult = $client->__soapCall( 'UploadInvoice_Patch', array('parameters' => $param_ary ) );
+		$this->log('UploadInvoice_Patch result: ' . wc_print_r( $aryResult, true ) );
 		$result = $aryResult->UploadInvoice_PatchResult;
 
 		if ( strpos($result, 'S_') === 0 ) {
@@ -513,7 +505,7 @@ class Paynow_Einvoice {
 				$response['invoices'][$invoice_data[0]] = $invoice_data[1];
 			}
 		} else {
-			$response = array($result);
+			$response = array( $result );
 		}
 
 		return $response;
@@ -542,10 +534,10 @@ class Paynow_Einvoice {
 			'mem_cid'=> $this->mem_cid,
 			'InvoiceNo'=>  $invoice_no
 		);
-		$this->pn_write_log($param_ary);
+		$this->log( 'Cancel einvoice parameters: ' . wc_print_r( $param_ary, true ) );
 
 		$aryResult = $client->__soapCall( 'CancelInvoice_I', array( 'parameters' => $param_ary ) );
-		$this->pn_write_log( $aryResult );
+		$this->log('Cancel einvoice for InvoiceNo:' . $invoice_no . ', result:' . wc_print_r( $aryResult, true ) );
 		$result = $aryResult->CancelInvoice_IResult;
 		return $result;
 
@@ -574,6 +566,10 @@ class Paynow_Einvoice {
 		}
 
 		if ( $issue_type == PayNow_EInvoice_Issue_Type::B2C ) {
+			if ( 'ei_carrier_type_no_carrier' !== $carrier_type ) {
+				echo '<div>載具類型：'.PayNow_EInvoice_Issue_Type::getCarrierType( $carrier_type ).'</div>';
+			}
+
 			$carrier_num = ( 'ei_carrier_type_no_carrier' == $carrier_type )? __('No Carrier', 'paynow-einvoice') : get_post_meta( $post->ID, '_paynow_ei_carrier_num', true);
 			echo '<div>'.__( 'Carrier Number', 'paynow-einvoice' ).'：'. $carrier_num .'</div>';
 		}
@@ -632,6 +628,12 @@ class Paynow_Einvoice {
 		}
 
 		if ( $issue_type == PayNow_EInvoice_Issue_Type::B2C) {
+
+			if ( 'ei_carrier_type_no_carrier' !== $carrier_type ) {
+				echo '<tr><td><strong>'.__( 'Carrier Type', 'paynow-einvoice' ).'</strong></td>';
+				echo '<td>'.PayNow_EInvoice_Issue_Type::getCarrierType( $carrier_type ).'</td></tr>';
+			}
+
 			$carrier_num = ( 'ei_carrier_type_no_carrier' == $carrier_type )? __('No Carrier', 'paynow-einvoice') : get_post_meta( $order->get_id(), '_paynow_ei_carrier_num', true);
 			echo '<tr><td><strong>'.__( 'Carrier Number', 'paynow-einvoice' ).'</strong></td>';
 			echo '<td>' . $carrier_num . '</td></tr>';
@@ -643,8 +645,8 @@ class Paynow_Einvoice {
 		}
 
 		if (get_post_meta( $order->get_id(), '_paynow_ei_issued', true) != 'yes' ) {
-			echo '<tr><td><strong>'.__( 'Issue Status', 'paynow-einvoice' ).'</strong></td>';
-			echo '<td>未開立</td></tr>';
+			echo '<tr><td><strong>'.__( 'Issue Status', 'paynow-einvoice' ).'</strong></td>';
+			echo '<td>'.__( 'Unissue', 'paynow-einvoice' ).'</td></tr>';
 		} else {
 			$invoice_url = get_post_meta( $order->get_id(), '_paynow_invoice_url', true);
 			echo '<tr><td><strong>'.__( 'E-Invoice NO', 'paynow-einvoice' ).'</strong></td>';
@@ -654,7 +656,6 @@ class Paynow_Einvoice {
 				echo '<td>' . get_post_meta( $order->get_id(), '_paynow_ei_result_invoice_number', true ) . '</td></tr>';
 			}
 
-
 		}
 
 		echo '</tbody></table>';
@@ -663,8 +664,6 @@ class Paynow_Einvoice {
 	}
 
 	function paynow_validate_einvoice_fields( ){
-
-		$this->pn_write_log($_POST);
 
 		$issue_type = $_POST['paynow_ei_issue_type'];
 		if ($issue_type == 'b2b') {
@@ -728,8 +727,7 @@ class Paynow_Einvoice {
 
 
 		$aryResult = $client->__soapCall( 'Get_InvoiceURL_I',array( 'parameters' => $param_ary ) );
-		$this->pn_write_log('===>Get_InvoiceURL_I');
-		$this->pn_write_log($aryResult);
+		$this->log('Get einvoice URL for InvoiceNo:' . $invoice_no . ', result:' . wc_print_r( $aryResult, true ) );
 		$invoice_url = (empty($aryResult->Get_InvoiceURL_IResult))? '': $aryResult->Get_InvoiceURL_IResult;
 
 		update_post_meta( $order_id, '_paynow_invoice_url', $invoice_url );
@@ -775,25 +773,29 @@ class Paynow_Einvoice {
 
 
 	public function paynow_einvoice_field( $checkout ) {
-		echo '<div id="paynow-ei-fields"><h3>發票資訊</h3>';
+		echo '<div id="paynow-ei-fields"><h3>'.__( 'E-Invoice Information', 'paynow-einvoice' ).'</h3>';
 
 		echo '<div id="paynow-ei-issue-type" class="paynow-field">';
+		$issue_type = array(
+				'b2c'    => __('Personal E-Invoice', 'paynow-einvoice'),
+				'b2b'    => __('Company E-Invoice', 'paynow-einvoice'),
+		);
+		$donate_orgs = $this->paynow_get_donate_org();
+		if ( count( $donate_orgs ) > 0 ) {
+			$issue_type['donate'] = __('Donate', 'paynow-einvoice');
+		}
 		woocommerce_form_field( 'paynow_ei_issue_type',
 			array(
 	        	'type'         => 'select',
 	        	'class'        => array( 'input-checkbox' ),
-	        	'label'        => _x('Issue Type', 'checkout', 'paynow-einvoice'),
-				'options'      => array(
-					'b2c'    => __('Personal E-Invoice', 'paynow-einvoice'),
-					'b2b'    => __('Company E-Invoice', 'paynow-einvoice'),
-					'donate' => __('Donate', 'paynow-einvoice'),
-				)
+	        	'label'        => _x('Issue Type', 'checkout', 'paynow-einvoice'),
+				'options'      => $issue_type,
 			),
 			$checkout->get_value( 'paynow_ei_issue_type' )
         );
         echo '</div>';
 
-		echo '<div id="paynow-ei-carrier-type" class="paynow-field">';
+		echo '<div id="paynow-ei-carrier-type-field" class="paynow-field">';
 		woocommerce_form_field( 'paynow_ei_carrier_type',
 			array(
 	        	'type'         => 'select',
@@ -842,17 +844,21 @@ class Paynow_Einvoice {
 		);
 		echo '</div>';
 
-		echo '<div id="paynow-ei-org" class="paynow-field">';
-		woocommerce_form_field( 'paynow_ei_donate_org',
-			array(
-				'type'			=> 'select',
-				'label'			=> __('Donate Organization', 'paynow-einvoice'),
-				'required'		=> false,
-				'options'		=> $this->paynow_get_donate_org()
-			),
-			$checkout->get_value('paynow_ei_donate_org')
-		);
-		echo '</div>';
+		$donate_orgs = $this->paynow_get_donate_org();
+		if ( count( $donate_orgs ) > 0 ) {
+			echo '<div id="paynow-ei-org" class="paynow-field">';
+			woocommerce_form_field( 'paynow_ei_donate_org',
+				array(
+					'type'			=> 'select',
+					'label'			=> __('Donate Organization', 'paynow-einvoice'),
+					'required'		=> false,
+					'options'		=> $this->paynow_get_donate_org()
+				),
+				$checkout->get_value('paynow_ei_donate_org')
+			);
+			echo '</div>';
+		}
+
 
         echo '</div>';
 	}
@@ -895,61 +901,28 @@ class Paynow_Einvoice {
 
 	public function paynow_get_donate_org() {
 		$orgs = array();
-		$org_strings = array_map( 'trim', explode("\n", get_option( 'wc_settings_tab_donate_org', true )) );
-		foreach ($org_strings as $value) {
-			list($k, $v) = explode('|', $value);
-			$orgs[ $k ] = $v;
+		$donate_orgs = get_option( 'wc_settings_tab_donate_org', '' );
+		if ( empty($donate_orgs) ) {
+			return $orgs;
+		}
+		$org_strings = array_map( 'trim', explode("\n", $donate_orgs) );
+		if ( count( $org_strings ) > 0 ) {
+			foreach ($org_strings as $value) {
+				list($k, $v) = explode('|', $value);
+				$orgs[ $k ] = $k . '-' . $v;
+			}
 		}
 		return $orgs;
 	}
 
-	public function pn_write_log($log)
-	{
-
-		if (is_array($log) || is_object($log)) {
-			error_log(print_r($log, true));
-		} else {
-			error_log($log);
-		}
-	}
-
 	public function log($message, $level = 'info') {
-		if ($this->log_enabled) {
-			if (empty($this->log)) {
+		if ( $this->log_enabled ) {
+			if ( empty( $this->log ) ) {
 				$this->log = new WC_Logger();
 			}
-			$this->log( $level, $message, array( 'source' => 'paynow-einvoice' ) );
+			$this->log->log( $level, $message, array( 'source' => 'paynow-einvoice' ) );
 		}
 	}
-
-	// 	private function get_amt( $order, $tax_rate ) {
-	// 	//四捨五入
-	// 	if ( $tax_rate == 5 ) {
-	// 		$amt = round( $order->get_total() / ( 1 + $tax_rate * 0.01 ) );
-	// 	} elseif ( $tax_rate == 0 ) {
-	// 		$amt = $order->get_total();
-	// 	}
-
-	// 	return $amt;
-	// }
-
-	// private function get_carrier_type( $user_carrier_type, $category ) {
-	// 	if ( $category == 'B2B')
-	// 		return '';
-
-	// 	if ( $user_carrier_type == 'ei_carrier_type_mobile_code' ) {
-	// 		return '0';
-	// 	}
-
-	// 	if ( $user_carrier_type == 'ei_carrier_type_cdc_code' ) {
-	// 		return '1';
-	// 	}
-
-	// 	if ( $user_carrier_type == 'ei_carrier_type_paynow_member') {
-	// 		return '2';
-	// 	}
-
-	// }
 
 	/**
 	 * Load the required dependencies for this plugin.

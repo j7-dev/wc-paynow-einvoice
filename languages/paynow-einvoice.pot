@@ -1,16 +1,16 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: PayNow E-Invoice\n"
-"POT-Creation-Date: 2021-09-17 17:00+0800\n"
+"POT-Creation-Date: 2022-02-16 15:23+0800\n"
 "PO-Revision-Date: 2021-03-16 22:12+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.0\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: paynow-einvoice.php\n"
@@ -21,252 +21,260 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 
-#: includes/class-paynow-einvoice.php:178
-#: includes/class-paynow-einvoice.php:216
+#: includes/class-paynow-einvoice.php:177
+#: includes/class-paynow-einvoice.php:213
 msgid "E-Invoice issued successfully."
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:185
-#: includes/class-paynow-einvoice.php:227
+#: includes/class-paynow-einvoice.php:184
+#: includes/class-paynow-einvoice.php:224
 msgid "E-Invoice issued failed."
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:201
+#: includes/class-paynow-einvoice.php:200
 msgid "E-Invoice is already issued."
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:225
+#: includes/class-paynow-einvoice.php:220
 msgid "E-Invoice issued failed"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:241
+#: includes/class-paynow-einvoice.php:238
 msgid "Issue PayNow E-Invoice"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:278
+#: includes/class-paynow-einvoice.php:274
 msgid "E-Invoice issued successfully:"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:288
+#: includes/class-paynow-einvoice.php:284
 msgid "E-Invoice issued failed:"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:306
+#: includes/class-paynow-einvoice.php:302
 #, php-format
 msgid "%s E-Invoice is issued."
 msgid_plural "%s E-Invoice are issued"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-paynow-einvoice.php:339
+#: includes/class-paynow-einvoice.php:335
 msgid "Cancel E-Invoice Successfully:"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:342
-#: includes/class-paynow-einvoice.php:343
+#: includes/class-paynow-einvoice.php:338
+#: includes/class-paynow-einvoice.php:339
 msgid "Cancel E-Invoice Failed:"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-#: includes/class-paynow-einvoice.php:557
-#: includes/class-paynow-einvoice.php:687
+#: includes/class-paynow-einvoice.php:549
+#: includes/class-paynow-einvoice.php:686
 msgid "PayNow E-Invoice"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:572
-#: includes/class-paynow-einvoice.php:628
-#: includes/class-paynow-einvoice.php:813
+#: includes/class-paynow-einvoice.php:564
+#: includes/class-paynow-einvoice.php:624
+#: includes/class-paynow-einvoice.php:815
 msgid "Buyer Name"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:573
-#: includes/class-paynow-einvoice.php:630
-#: includes/class-paynow-einvoice.php:824
+#: includes/class-paynow-einvoice.php:565
+#: includes/class-paynow-einvoice.php:626
+#: includes/class-paynow-einvoice.php:826
 msgid "Unified Business NO"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:577
-#: includes/class-paynow-einvoice.php:635
-#: includes/class-paynow-einvoice.php:878
+#: includes/class-paynow-einvoice.php:573
+#: includes/class-paynow-einvoice.php:637
+#: includes/class-paynow-einvoice.php:884
 msgid "No Carrier"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:578
-#: includes/class-paynow-einvoice.php:636
-#: includes/class-paynow-einvoice.php:836
+#: includes/class-paynow-einvoice.php:574
+#: includes/class-paynow-einvoice.php:638
+#: includes/class-paynow-einvoice.php:838
 msgid "Carrier Number"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:582
-#: includes/class-paynow-einvoice.php:641
+#: includes/class-paynow-einvoice.php:578
+#: includes/class-paynow-einvoice.php:643
 msgid "Love Code"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:589
-#: includes/class-paynow-einvoice.php:591
-#: includes/class-paynow-einvoice.php:603
-#: includes/class-paynow-einvoice.php:650
+#: includes/class-paynow-einvoice.php:585
+#: includes/class-paynow-einvoice.php:587
+#: includes/class-paynow-einvoice.php:599
+#: includes/class-paynow-einvoice.php:652
 msgid "E-Invoice NO"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:600
+#: includes/class-paynow-einvoice.php:596
 msgid "Cancel E-Invoice"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:603
+#: includes/class-paynow-einvoice.php:599
 msgid "N/A"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:611
+#: includes/class-paynow-einvoice.php:607
 msgid "Issue E-Invoice"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:618
+#: includes/class-paynow-einvoice.php:614
 msgid "PayNow E-Invoice Details"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:623
+#: includes/class-paynow-einvoice.php:619
+#: includes/class-paynow-einvoice.php:791
 msgctxt "checkout"
 msgid "Issue Type"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:646
-msgid "Issue S\btatus"
-msgstr ""
-
-#: includes/class-paynow-einvoice.php:674
-msgid "Please input the company name and Unified Business NO"
-msgstr ""
-
-#: includes/class-paynow-einvoice.php:680
-msgid "Please input the carrier number"
-msgstr ""
-
-#: includes/class-paynow-einvoice.php:771
-msgid "Notice: You need to set up Merchant ID and Merchant Password "
-msgstr ""
-
-#: includes/class-paynow-einvoice.php:771
-msgid "PayNow E-Invoice Setting"
-msgstr ""
-
-#: includes/class-paynow-einvoice.php:785
-msgctxt "checkout"
-msgid "I\bssue Type"
-msgstr ""
-
-#: includes/class-paynow-einvoice.php:787
-msgid "Personal E-Invoice"
-msgstr ""
-
-#: includes/class-paynow-einvoice.php:788
-msgid "Company E-Invoice"
-msgstr ""
-
-#: includes/class-paynow-einvoice.php:789
-msgid "Donate"
-msgstr ""
-
-#: includes/class-paynow-einvoice.php:801
-#: includes/settings/class-paynow-einvoice-settings-tab.php:128
+#: includes/class-paynow-einvoice.php:633
+#: includes/class-paynow-einvoice.php:803
+#: includes/settings/class-paynow-einvoice-settings-tab.php:148
 msgid "Carrier Type"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:837
+#: includes/class-paynow-einvoice.php:648
+msgid "Issue Status"
+msgstr ""
+
+#: includes/class-paynow-einvoice.php:649
+msgid "Unissue"
+msgstr ""
+
+#: includes/class-paynow-einvoice.php:673
+msgid "Please input the company name and Unified Business NO"
+msgstr ""
+
+#: includes/class-paynow-einvoice.php:679
+msgid "Please input the carrier number"
+msgstr ""
+
+#: includes/class-paynow-einvoice.php:769
+msgid "Notice: You need to set up Merchant ID and Merchant Password "
+msgstr ""
+
+#: includes/class-paynow-einvoice.php:769
+msgid "PayNow E-Invoice Setting"
+msgstr ""
+
+#: includes/class-paynow-einvoice.php:776
+msgid "E-Invoice Information"
+msgstr ""
+
+#: includes/class-paynow-einvoice.php:780
+msgid "Personal E-Invoice"
+msgstr ""
+
+#: includes/class-paynow-einvoice.php:781
+msgid "Company E-Invoice"
+msgstr ""
+
+#: includes/class-paynow-einvoice.php:785
+msgid "Donate"
+msgstr ""
+
+#: includes/class-paynow-einvoice.php:839
 msgid "Please input the Carrier Number"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:849
+#: includes/class-paynow-einvoice.php:853
 msgid "Donate Organization"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:881
-#: includes/settings/class-paynow-einvoice-settings-tab.php:130
+#: includes/class-paynow-einvoice.php:887
+#: includes/settings/class-paynow-einvoice-settings-tab.php:150
 msgid "Mobile Code"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:885
-#: includes/settings/class-paynow-einvoice-settings-tab.php:136
+#: includes/class-paynow-einvoice.php:891
+#: includes/settings/class-paynow-einvoice-settings-tab.php:156
 msgid "Citizen Digital Certificate"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:889
-#: includes/settings/class-paynow-einvoice-settings-tab.php:143
+#: includes/class-paynow-einvoice.php:895
+#: includes/settings/class-paynow-einvoice-settings-tab.php:163
 msgid "Easy Card"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:31
-msgid "電子發票設定"
+#. Author of the plugin/theme
+#: includes/settings/class-paynow-einvoice-settings-tab.php:13
+msgid "PayNow"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:56
+#: includes/settings/class-paynow-einvoice-settings-tab.php:16
+#: includes/settings/class-paynow-einvoice-settings-tab.php:39
+#: includes/settings/class-paynow-einvoice-settings-tab.php:76
 msgid "E-Invoice Settings"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:62
+#: includes/settings/class-paynow-einvoice-settings-tab.php:82
 msgid "Enable"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:68
+#: includes/settings/class-paynow-einvoice-settings-tab.php:88
 msgid "Test Mode"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:74
+#: includes/settings/class-paynow-einvoice-settings-tab.php:94
 msgid "Debug Log"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:76
+#: includes/settings/class-paynow-einvoice-settings-tab.php:96
 msgid "Enable Logging"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:78
+#: includes/settings/class-paynow-einvoice-settings-tab.php:98
 #, php-format
 msgid "Log PayNow E-Invoice message, inside <code>%s</code>"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:82
+#: includes/settings/class-paynow-einvoice-settings-tab.php:102
 msgid "Merchant ID"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:88
+#: includes/settings/class-paynow-einvoice-settings-tab.php:108
 msgid "Merchant Password"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:94
+#: includes/settings/class-paynow-einvoice-settings-tab.php:114
 msgid "Issue Mode"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:96
+#: includes/settings/class-paynow-einvoice-settings-tab.php:116
 msgid "You can issue the e-invoice manually even if you choose Automatic mode"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:100
+#: includes/settings/class-paynow-einvoice-settings-tab.php:120
 msgid "Automatic"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:101
+#: includes/settings/class-paynow-einvoice-settings-tab.php:121
 msgid "Manual"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:106
+#: includes/settings/class-paynow-einvoice-settings-tab.php:126
 msgid "Allowed Order Status"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:109
+#: includes/settings/class-paynow-einvoice-settings-tab.php:129
 msgid ""
 "When order status changes to the status, the e-invoice will be issued "
 "automatically."
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:115
+#: includes/settings/class-paynow-einvoice-settings-tab.php:135
 msgid "Tax Type"
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:117
+#: includes/settings/class-paynow-einvoice-settings-tab.php:137
 msgid "When input the product price, please input the price with tax-included."
 msgstr ""
 
-#: includes/settings/class-paynow-einvoice-settings-tab.php:157
+#: includes/settings/class-paynow-einvoice-settings-tab.php:177
 msgid "Donated Organization"
 msgstr ""
 
@@ -276,10 +284,6 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid "PayNow E-Invoice for WooCommerce"
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "PayNow"
 msgstr ""
 
 #. Author URI of the plugin/theme

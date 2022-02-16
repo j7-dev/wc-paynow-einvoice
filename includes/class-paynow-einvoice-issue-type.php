@@ -6,10 +6,11 @@ class PayNow_EInvoice_Issue_Type {
 	const B2C    = 'b2c';
 	const DONATE = 'donate';
 
-    const UBN = 'ei_carrier_type_ubn';
-    const MOBILE_CODE = 'ei_carrier_type_mobile_code';
-    const CDC_CODE = 'ei_carrier_type_cdc_code';
-    // const DONATE = 'ei_carrier_type_donate';
+    const UBN           = 'ei_carrier_type_ubn';
+    const MOBILE_CODE   = 'ei_carrier_type_mobile_code';
+    const CDC_CODE      = 'ei_carrier_type_cdc_code';
+	const EASYCARD_CODE = 'ei_carrier_type_easycard_code';
+    // const DONATE        = 'ei_carrier_type_donate';
 
 	public static function getType( $issue_type ) {
 		switch ( $issue_type ) {
@@ -28,7 +29,7 @@ class PayNow_EInvoice_Issue_Type {
         }
 	}
 
-    public static function getName( $carrier_type ) {
+    public static function getCarrierType( $carrier_type ) {
         switch ( $carrier_type ) {
             case 'ei_carrier_type_ubn':
                 return '統一編號';
@@ -38,6 +39,9 @@ class PayNow_EInvoice_Issue_Type {
                 break;
             case 'ei_carrier_type_cdc_code':
                 return '自然人憑證條碼';
+                break;
+			case 'ei_carrier_type_easycard_code':
+                return '悠遊卡';
                 break;
             case 'ei_carrier_type_donate':
                 return '捐贈發票';

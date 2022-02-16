@@ -12,16 +12,16 @@
 		var issue_type = $('#paynow_ei_issue_type').val();
 		if (issue_type == 'b2b') {
 
-			$('#paynow-ei-carrier-type').hide();
+			$('#paynow-ei-carrier-type-field').hide();
 			change_fields(issue_type,'ei_carrier_type_ubn');
 
 		} else if (issue_type == 'b2c') {
 
-			$('#paynow-ei-carrier-type').show();
-			change_fields(issue_type, 'ei_carrier_type_mobile_code');
+			$('#paynow-ei-carrier-type-field').show();
+			change_fields(issue_type, $('#paynow_ei_carrier_type').val());
 
 		} else {
-			$('#paynow-ei-carrier-type').hide();
+			$('#paynow-ei-carrier-type-field').hide();
 			change_fields(issue_type, 'ei_carrier_type_donate');
 		}
 
@@ -76,6 +76,13 @@
             $carrier_num.hide();
             $donate_org.show();
         }
+
+		if (carrier_type == 'ei_carrier_type_easycard_code' ) {
+			$c_title.hide();
+			$ubn.hide();
+			$carrier_num.show();
+			$donate_org.hide();
+		}
 
     }
 
