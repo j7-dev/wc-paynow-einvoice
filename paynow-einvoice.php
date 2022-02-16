@@ -16,7 +16,7 @@
  * Plugin Name:       PayNow E-Invoice
  * Plugin URI:        https://paynow.yangsheep.art
  * Description:       PayNow E-Invoice for WooCommerce
- * Version:           1.0.4
+ * Version:           1.0.5
  * Author:            PayNow
  * Author URI:        https://www.paynow.com.tw/
  * License:           GPL-2.0+
