@@ -423,11 +423,11 @@ class Paynow_Einvoice {
 
 					$ei_datas[] = array(
 
-						'orderno'        	=>  "'".$order->get_order_number(),  //商店訂單編號
+						'orderno'        	=>  "'".$order->get_id(),  //商店訂單編號
 
-						'buyer_id'			=>  "'".$ubn,//統編
-						'buyer_name'		=>  "'".$buyer_name, //買受人名稱
-						'buyer_add'		    =>  "'".$buyer_addr, //若填入代表要寄送紙本發票，不寄送紙本發票請填空，如最前面為 BRING+ 地址則會保留地址資訊但不寄送發票
+						'buyer_id'			=>  "'".$this->clean_str( $ubn ),//統編
+						'buyer_name'		=>  "'".$this->clean_str( $buyer_name ), //買受人名稱
+						'buyer_add'		    =>  "'".$buyer_addr, //若填入代表要寄送紙本發票，不寄送紙本發票請填空，如最前面為 BRING+地址則會保留地址資訊但不寄送發票
 						'buyer_phone'		=>  "'".$order->get_billing_phone(),
 						'buyer_email'		=>  "'".$order->get_billing_email(),
 
@@ -436,11 +436,11 @@ class Paynow_Einvoice {
 						'CarrierID_2'		=>  "'".$carrier_id2,//載具隱碼
 						'LoveCode'			=>  "'".$love_code,
 
-						'Description'		=>  "'".$order_item->get_name(),
+						'Description'		=>  "'".$this->clean_str( $order_item->get_name() ),
 						'Quantity'			=>  "'".$qty = ($order_item->get_type() == 'line_item')? $order_item->get_quantity(): '1',
 						'UnitPrice'			=>  "'".($order_item->get_total() / $qty),
 						'Amount'			=>  "'".$order_item->get_total(),
-						'Remark'			=>  "'".$comment,
+						'Remark'			=>  "'".$this->clean_str( $comment ),
 
 						'ItemTaxtype'		=>  "'".$tax_type,
 						'IsPassCustoms'     =>  "'",//1:未經海關出口,2:經海關出口 (零稅率為必填非零稅率發票請留空)
@@ -750,12 +750,14 @@ class Paynow_Einvoice {
 	}
 
 	private function get_buyer_addr( $order ) {
-		if ( $order ) {
-			//不寄送發票
-			return 'BRING'. $order->get_billing_state().$order->get_billing_city().$order->get_billing_address_1().$order->get_billing_address_2();
-		} else {
-			return '';
-		}
+		//不寄送紙本
+		return '';
+	}
+
+	private function clean_str( $str ) {
+		$str = str_replace(',', '', $str);
+		$str = str_replace("'", '', $str);
+		return $str;
 	}
 
 	public function paynow_einvoice_add_settings() {
