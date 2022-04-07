@@ -1,4 +1,4 @@
-name: Create a new PayNow Payment release
+name: Create a new PayNow E-Invoice release
 on:
   release:
     types: [published]
@@ -14,15 +14,15 @@ jobs:
       - name: Create artifact
         uses: montudor/action-zip@v1
         with:
-          args: zip -X -r build/paynow-enivoice.zip . -x *.git* node_modules/\* .* "*/\.*" *.dist grumphp.yml composer.* build**
+          args: zip -X -r build/paynow-einvoice.zip . -x *.git* node_modules/\* .* "*/\.*" *.dist grumphp.yml composer.* build**
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: paynow-enivoice
-          path: build/paynow-enivoice.zip
+          name: paynow-einvoice
+          path: build/paynow-einvoice.zip
       - name: Upload to release
         uses: JasonEtco/upload-to-release@master
         with:
-          args: build/paynow-enivoice.zip application/zip
+          args: build/paynow-einvoice.zip application/zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
