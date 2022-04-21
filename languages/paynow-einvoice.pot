@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PayNow E-Invoice\n"
-"POT-Creation-Date: 2022-02-16 15:23+0800\n"
+"POT-Creation-Date: 2022-04-21 14:46+0800\n"
 "PO-Revision-Date: 2021-03-16 22:12+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -67,7 +67,6 @@ msgstr ""
 msgid "Cancel E-Invoice Failed:"
 msgstr ""
 
-#. Plugin Name of the plugin/theme
 #: includes/class-paynow-einvoice.php:549
 #: includes/class-paynow-einvoice.php:686
 msgid "PayNow E-Invoice"
@@ -75,25 +74,25 @@ msgstr ""
 
 #: includes/class-paynow-einvoice.php:564
 #: includes/class-paynow-einvoice.php:624
-#: includes/class-paynow-einvoice.php:815
+#: includes/class-paynow-einvoice.php:817
 msgid "Buyer Name"
 msgstr ""
 
 #: includes/class-paynow-einvoice.php:565
 #: includes/class-paynow-einvoice.php:626
-#: includes/class-paynow-einvoice.php:826
+#: includes/class-paynow-einvoice.php:828
 msgid "Unified Business NO"
 msgstr ""
 
 #: includes/class-paynow-einvoice.php:573
 #: includes/class-paynow-einvoice.php:637
-#: includes/class-paynow-einvoice.php:884
+#: includes/class-paynow-einvoice.php:886
 msgid "No Carrier"
 msgstr ""
 
 #: includes/class-paynow-einvoice.php:574
 #: includes/class-paynow-einvoice.php:638
-#: includes/class-paynow-einvoice.php:838
+#: includes/class-paynow-einvoice.php:840
 msgid "Carrier Number"
 msgstr ""
 
@@ -126,13 +125,13 @@ msgid "PayNow E-Invoice Details"
 msgstr ""
 
 #: includes/class-paynow-einvoice.php:619
-#: includes/class-paynow-einvoice.php:791
+#: includes/class-paynow-einvoice.php:793
 msgctxt "checkout"
 msgid "Issue Type"
 msgstr ""
 
 #: includes/class-paynow-einvoice.php:633
-#: includes/class-paynow-einvoice.php:803
+#: includes/class-paynow-einvoice.php:805
 #: includes/settings/class-paynow-einvoice-settings-tab.php:148
 msgid "Carrier Type"
 msgstr ""
@@ -153,49 +152,49 @@ msgstr ""
 msgid "Please input the carrier number"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:769
+#: includes/class-paynow-einvoice.php:771
 msgid "Notice: You need to set up Merchant ID and Merchant Password "
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:769
+#: includes/class-paynow-einvoice.php:771
 msgid "PayNow E-Invoice Setting"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:776
+#: includes/class-paynow-einvoice.php:778
 msgid "E-Invoice Information"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:780
+#: includes/class-paynow-einvoice.php:782
 msgid "Personal E-Invoice"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:781
+#: includes/class-paynow-einvoice.php:783
 msgid "Company E-Invoice"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:785
+#: includes/class-paynow-einvoice.php:787
 msgid "Donate"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:839
+#: includes/class-paynow-einvoice.php:841
 msgid "Please input the Carrier Number"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:853
+#: includes/class-paynow-einvoice.php:855
 msgid "Donate Organization"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:887
+#: includes/class-paynow-einvoice.php:889
 #: includes/settings/class-paynow-einvoice-settings-tab.php:150
 msgid "Mobile Code"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:891
+#: includes/class-paynow-einvoice.php:893
 #: includes/settings/class-paynow-einvoice-settings-tab.php:156
 msgid "Citizen Digital Certificate"
 msgstr ""
 
-#: includes/class-paynow-einvoice.php:895
+#: includes/class-paynow-einvoice.php:897
 #: includes/settings/class-paynow-einvoice-settings-tab.php:163
 msgid "Easy Card"
 msgstr ""
@@ -278,12 +277,13 @@ msgstr ""
 msgid "Donated Organization"
 msgstr ""
 
-#. Plugin URI of the plugin/theme
-msgid "https://paynow.yangsheep.art"
+#. Plugin Name of the plugin/theme
+#. Description of the plugin/theme
+msgid "PayNow (Taiwan) E-Invoice for WooCommerce"
 msgstr ""
 
-#. Description of the plugin/theme
-msgid "PayNow E-Invoice for WooCommerce"
+#. Plugin URI of the plugin/theme
+msgid "https://paynow.yangsheep.art"
 msgstr ""
 
 #. Author URI of the plugin/theme

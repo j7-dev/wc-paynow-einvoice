@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PayNow E-Invoice\n"
-"POT-Creation-Date: 2022-02-16 15:24+0800\n"
-"PO-Revision-Date: 2022-02-16 15:24+0800\n"
+"POT-Creation-Date: 2022-04-21 14:46+0800\n"
+"PO-Revision-Date: 2022-04-21 14:47+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_TW\n"
@@ -66,7 +66,6 @@ msgstr "作廢電子發票成功："
 msgid "Cancel E-Invoice Failed:"
 msgstr "作廢電子發票失敗："
 
-#. Plugin Name of the plugin/theme
 #: includes/class-paynow-einvoice.php:549
 #: includes/class-paynow-einvoice.php:686
 msgid "PayNow E-Invoice"
@@ -74,25 +73,25 @@ msgstr "PayNow 電子發票模組"
 
 #: includes/class-paynow-einvoice.php:564
 #: includes/class-paynow-einvoice.php:624
-#: includes/class-paynow-einvoice.php:815
+#: includes/class-paynow-einvoice.php:817
 msgid "Buyer Name"
 msgstr "買方名稱"
 
 #: includes/class-paynow-einvoice.php:565
 #: includes/class-paynow-einvoice.php:626
-#: includes/class-paynow-einvoice.php:826
+#: includes/class-paynow-einvoice.php:828
 msgid "Unified Business NO"
 msgstr "統一編號"
 
 #: includes/class-paynow-einvoice.php:573
 #: includes/class-paynow-einvoice.php:637
-#: includes/class-paynow-einvoice.php:884
+#: includes/class-paynow-einvoice.php:886
 msgid "No Carrier"
 msgstr "無載具"
 
 #: includes/class-paynow-einvoice.php:574
 #: includes/class-paynow-einvoice.php:638
-#: includes/class-paynow-einvoice.php:838
+#: includes/class-paynow-einvoice.php:840
 msgid "Carrier Number"
 msgstr "載具編號"
 
@@ -125,13 +124,13 @@ msgid "PayNow E-Invoice Details"
 msgstr "PayNow 電子發票資訊"
 
 #: includes/class-paynow-einvoice.php:619
-#: includes/class-paynow-einvoice.php:791
+#: includes/class-paynow-einvoice.php:793
 msgctxt "checkout"
 msgid "Issue Type"
 msgstr "開立方式"
 
 #: includes/class-paynow-einvoice.php:633
-#: includes/class-paynow-einvoice.php:803
+#: includes/class-paynow-einvoice.php:805
 #: includes/settings/class-paynow-einvoice-settings-tab.php:148
 msgid "Carrier Type"
 msgstr "載具類型"
@@ -152,49 +151,49 @@ msgstr "請輸入公司名稱和統一編號"
 msgid "Please input the carrier number"
 msgstr "請輸入載具編號"
 
-#: includes/class-paynow-einvoice.php:769
+#: includes/class-paynow-einvoice.php:771
 msgid "Notice: You need to set up Merchant ID and Merchant Password "
 msgstr "注意：你必須要設定商家編號和商家密碼 "
 
-#: includes/class-paynow-einvoice.php:769
+#: includes/class-paynow-einvoice.php:771
 msgid "PayNow E-Invoice Setting"
 msgstr "PayNow 電子發票設定"
 
-#: includes/class-paynow-einvoice.php:776
+#: includes/class-paynow-einvoice.php:778
 msgid "E-Invoice Information"
 msgstr "電子發票資訊"
 
-#: includes/class-paynow-einvoice.php:780
+#: includes/class-paynow-einvoice.php:782
 msgid "Personal E-Invoice"
 msgstr "個人用電子發票"
 
-#: includes/class-paynow-einvoice.php:781
+#: includes/class-paynow-einvoice.php:783
 msgid "Company E-Invoice"
 msgstr "公司用電子發票"
 
-#: includes/class-paynow-einvoice.php:785
+#: includes/class-paynow-einvoice.php:787
 msgid "Donate"
 msgstr "捐贈"
 
-#: includes/class-paynow-einvoice.php:839
+#: includes/class-paynow-einvoice.php:841
 msgid "Please input the Carrier Number"
 msgstr "請輸入載具編號"
 
-#: includes/class-paynow-einvoice.php:853
+#: includes/class-paynow-einvoice.php:855
 msgid "Donate Organization"
 msgstr "捐贈單位"
 
-#: includes/class-paynow-einvoice.php:887
+#: includes/class-paynow-einvoice.php:889
 #: includes/settings/class-paynow-einvoice-settings-tab.php:150
 msgid "Mobile Code"
 msgstr "手機代碼"
 
-#: includes/class-paynow-einvoice.php:891
+#: includes/class-paynow-einvoice.php:893
 #: includes/settings/class-paynow-einvoice-settings-tab.php:156
 msgid "Citizen Digital Certificate"
 msgstr "自然人憑證"
 
-#: includes/class-paynow-einvoice.php:895
+#: includes/class-paynow-einvoice.php:897
 #: includes/settings/class-paynow-einvoice-settings-tab.php:163
 msgid "Easy Card"
 msgstr "悠遊卡"
@@ -277,13 +276,14 @@ msgstr "輸入商品價格時，請輸入含稅價。"
 msgid "Donated Organization"
 msgstr "捐贈單位"
 
+#. Plugin Name of the plugin/theme
+#. Description of the plugin/theme
+msgid "PayNow (Taiwan) E-Invoice for WooCommerce"
+msgstr "PayNow 立吉富電子發票模組"
+
 #. Plugin URI of the plugin/theme
 msgid "https://paynow.yangsheep.art"
 msgstr ""
-
-#. Description of the plugin/theme
-msgid "PayNow E-Invoice for WooCommerce"
-msgstr "台灣立吉富 PayNow 電子發票模組 for WooCommerce"
 
 #. Author URI of the plugin/theme
 msgid "https://www.paynow.com.tw/"

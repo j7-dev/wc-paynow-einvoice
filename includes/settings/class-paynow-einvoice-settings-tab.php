@@ -47,7 +47,7 @@ class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
 	 * @return array
 	 */
 	public function get_sections() {
-		if ( ! is_plugin_active( 'paynow-payment/paynow-payment.php' ) && ! is_plugin_active( 'paynow-shipping/paynow-shipping.php' ) ) {
+		if ( ! is_plugin_active( 'tw-paynow-payment/paynow-payment.php' ) && ! is_plugin_active( 'tw-paynow-shipping/paynow-shipping.php' ) ) {
 			$sections = self::$sections;
 			return apply_filters( 'woocommerce_get_sections_' . $this->id, $sections );
 		}
@@ -204,7 +204,7 @@ class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
 			return;
 		}
 
-		if ( is_plugin_active( 'paynow-payment/paynow-payment.php' ) || is_plugin_active( 'paynow-shipping/paynow-shipping.php' ) ) {
+		if ( is_plugin_active( 'tw-paynow-payment/paynow-payment.php' ) || is_plugin_active( 'tw-paynow-shipping/paynow-shipping.php' ) ) {
 			return;
 		}
 
