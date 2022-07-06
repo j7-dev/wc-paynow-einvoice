@@ -1,19 +1,19 @@
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PayNow E-Invoice\n"
-"POT-Creation-Date: 2022-04-21 14:46+0800\n"
-"PO-Revision-Date: 2022-04-21 14:47+0800\n"
+"Project-Id-Version: PayNow (Taiwan) E-Invoice for WooCommerce\n"
+"POT-Creation-Date: 2022-06-12 15:53+0800\n"
+"PO-Revision-Date: 2022-06-12 15:52+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Generator: Poedit 3.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
-"X-Poedit-WPHeader: paynow-einvoice.php\n"
+"X-Poedit-WPHeader: wc-paynow-einvoice.php\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
@@ -24,179 +24,180 @@ msgstr ""
 #: includes/class-paynow-einvoice.php:177
 #: includes/class-paynow-einvoice.php:213
 msgid "E-Invoice issued successfully."
-msgstr "電子發票開立成功。"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:184
 #: includes/class-paynow-einvoice.php:224
 msgid "E-Invoice issued failed."
-msgstr "電子發票開立失敗。"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:200
 msgid "E-Invoice is already issued."
-msgstr "電子發票已開立。"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:220
 msgid "E-Invoice issued failed"
-msgstr "電子發票開立失敗"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:238
 msgid "Issue PayNow E-Invoice"
-msgstr "開立電子發票"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:274
 msgid "E-Invoice issued successfully:"
-msgstr "電子發票開立成功："
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:284
 msgid "E-Invoice issued failed:"
-msgstr "電子發票開立失敗："
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:302
 #, php-format
 msgid "%s E-Invoice is issued."
 msgid_plural "%s E-Invoice are issued"
-msgstr[0] "%s 張電子發票開立成功。"
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/class-paynow-einvoice.php:335
 msgid "Cancel E-Invoice Successfully:"
-msgstr "作廢電子發票成功："
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:338
 #: includes/class-paynow-einvoice.php:339
 msgid "Cancel E-Invoice Failed:"
-msgstr "作廢電子發票失敗："
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:549
 #: includes/class-paynow-einvoice.php:686
 msgid "PayNow E-Invoice"
-msgstr "PayNow 電子發票模組"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:564
 #: includes/class-paynow-einvoice.php:624
 #: includes/class-paynow-einvoice.php:817
 msgid "Buyer Name"
-msgstr "買方名稱"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:565
 #: includes/class-paynow-einvoice.php:626
 #: includes/class-paynow-einvoice.php:828
 msgid "Unified Business NO"
-msgstr "統一編號"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:573
 #: includes/class-paynow-einvoice.php:637
 #: includes/class-paynow-einvoice.php:886
 msgid "No Carrier"
-msgstr "無載具"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:574
 #: includes/class-paynow-einvoice.php:638
 #: includes/class-paynow-einvoice.php:840
 msgid "Carrier Number"
-msgstr "載具編號"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:578
 #: includes/class-paynow-einvoice.php:643
 msgid "Love Code"
-msgstr "愛心碼"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:585
 #: includes/class-paynow-einvoice.php:587
 #: includes/class-paynow-einvoice.php:599
 #: includes/class-paynow-einvoice.php:652
 msgid "E-Invoice NO"
-msgstr "發票號碼"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:596
 msgid "Cancel E-Invoice"
-msgstr "作廢電子發票"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:599
 msgid "N/A"
-msgstr "未開立"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:607
 msgid "Issue E-Invoice"
-msgstr "開立電子發票"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:614
 msgid "PayNow E-Invoice Details"
-msgstr "PayNow 電子發票資訊"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:619
 #: includes/class-paynow-einvoice.php:793
 msgctxt "checkout"
 msgid "Issue Type"
-msgstr "開立方式"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:633
 #: includes/class-paynow-einvoice.php:805
 #: includes/settings/class-paynow-einvoice-settings-tab.php:148
 msgid "Carrier Type"
-msgstr "載具類型"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:648
 msgid "Issue Status"
-msgstr "開立狀態"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:649
 msgid "Unissue"
-msgstr "未開立"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:673
 msgid "Please input the company name and Unified Business NO"
-msgstr "請輸入公司名稱和統一編號"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:679
 msgid "Please input the carrier number"
-msgstr "請輸入載具編號"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:771
 msgid "Notice: You need to set up Merchant ID and Merchant Password "
-msgstr "注意：你必須要設定商家編號和商家密碼 "
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:771
 msgid "PayNow E-Invoice Setting"
-msgstr "PayNow 電子發票設定"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:778
 msgid "E-Invoice Information"
-msgstr "電子發票資訊"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:782
 msgid "Personal E-Invoice"
-msgstr "個人用電子發票"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:783
 msgid "Company E-Invoice"
-msgstr "公司用電子發票"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:787
 msgid "Donate"
-msgstr "捐贈"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:841
 msgid "Please input the Carrier Number"
-msgstr "請輸入載具編號"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:855
 msgid "Donate Organization"
-msgstr "捐贈單位"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:889
 #: includes/settings/class-paynow-einvoice-settings-tab.php:150
 msgid "Mobile Code"
-msgstr "手機代碼"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:893
 #: includes/settings/class-paynow-einvoice-settings-tab.php:156
 msgid "Citizen Digital Certificate"
-msgstr "自然人憑證"
+msgstr ""
 
 #: includes/class-paynow-einvoice.php:897
 #: includes/settings/class-paynow-einvoice-settings-tab.php:163
 msgid "Easy Card"
-msgstr "悠遊卡"
+msgstr ""
 
 #. Author of the plugin/theme
 #: includes/settings/class-paynow-einvoice-settings-tab.php:13
@@ -207,79 +208,79 @@ msgstr ""
 #: includes/settings/class-paynow-einvoice-settings-tab.php:39
 #: includes/settings/class-paynow-einvoice-settings-tab.php:76
 msgid "E-Invoice Settings"
-msgstr "電子發票設定"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:82
 msgid "Enable"
-msgstr "啟用"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:88
 msgid "Test Mode"
-msgstr "測試模式"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:94
 msgid "Debug Log"
-msgstr "除錯紀錄"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:96
 msgid "Enable Logging"
-msgstr "啓用除錯記錄"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:98
 #, php-format
 msgid "Log PayNow E-Invoice message, inside <code>%s</code>"
-msgstr "在<code>%s</code>中紀錄 PayNow 電子發票的除錯訊息"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:102
 msgid "Merchant ID"
-msgstr "商家編號"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:108
 msgid "Merchant Password"
-msgstr "商家密碼"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:114
 msgid "Issue Mode"
-msgstr "開立模式"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:116
 msgid "You can issue the e-invoice manually even if you choose Automatic mode"
-msgstr "自動開立模式下，你仍然可以手動開立電子發票"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:120
 msgid "Automatic"
-msgstr "自動開立"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:121
 msgid "Manual"
-msgstr "手動開立"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:126
 msgid "Allowed Order Status"
-msgstr "允許自動開立發票的訂單狀態"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:129
 msgid ""
 "When order status changes to the status, the e-invoice will be issued "
 "automatically."
-msgstr "當訂單狀態改變為指定狀態，電子發票將自動開立。"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:135
 msgid "Tax Type"
-msgstr "稅別"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:137
 msgid "When input the product price, please input the price with tax-included."
-msgstr "輸入商品價格時，請輸入含稅價。"
+msgstr ""
 
 #: includes/settings/class-paynow-einvoice-settings-tab.php:177
 msgid "Donated Organization"
-msgstr "捐贈單位"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
 #. Description of the plugin/theme
 msgid "PayNow (Taiwan) E-Invoice for WooCommerce"
-msgstr "PayNow 立吉富電子發票模組"
+msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "https://paynow.yangsheep.art"
@@ -288,11 +289,3 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://www.paynow.com.tw/"
 msgstr ""
-
-#~ msgctxt "checkout"
-#~ msgid "I\bssue Type"
-#~ msgstr "開立方式"
-
-#~ msgctxt "order"
-#~ msgid "Issue Type"
-#~ msgstr "開立方式"

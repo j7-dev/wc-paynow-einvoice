@@ -21,7 +21,7 @@
  * Author URI:        https://www.paynow.com.tw/
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       paynow-einvoice
+ * Text Domain:       wc-paynow-einvoice
  * Domain Path:       /languages
  */
 

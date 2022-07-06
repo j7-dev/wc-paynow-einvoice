@@ -10,10 +10,10 @@ class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
 
     public function __construct() {
         $this->id    = 'paynow';
-        $this->label = __( 'PayNow', 'paynow-einvoice' );
+        $this->label = __( 'PayNow', 'wc-paynow-einvoice' );
 
 		self::$sections = array(
-			'einvoice' => __( 'E-Invoice Settings', 'paynow-einvoice' ),
+			'einvoice' => __( 'E-Invoice Settings', 'wc-paynow-einvoice' ),
 		);
 
 		add_action( 'woocommerce_settings_' . $this->id, array( $this, 'output' ) );
@@ -36,7 +36,7 @@ class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
 	public function paynow_einvoice_sections( $sections ) {
 
 		if ( is_array( $sections ) && ! array_key_exists( 'einvoice', $sections ) ) {
-			$sections['einvoice'] = __( 'E-Invoice Settings', 'paynow-einvoice' );
+			$sections['einvoice'] = __( 'E-Invoice Settings', 'wc-paynow-einvoice' );
 		}
 		return $sections;
 	}
@@ -47,7 +47,7 @@ class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
 	 * @return array
 	 */
 	public function get_sections() {
-		if ( ! is_plugin_active( 'tw-paynow-payment/paynow-payment.php' ) && ! is_plugin_active( 'tw-paynow-shipping/paynow-shipping.php' ) ) {
+		if ( ! is_plugin_active( 'wc-paynow-payment/wc-paynow-payment.php' ) && ! is_plugin_active( 'wc-paynow-shipping/wc-paynow-shipping.php' ) ) {
 			$sections = self::$sections;
 			return apply_filters( 'woocommerce_get_sections_' . $this->id, $sections );
 		}
@@ -73,57 +73,57 @@ class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
 				'paynow_einvoice_settings',
 				array(
 				'section_title' => array(
-					'name'     => __( 'E-Invoice Settings', 'paynow-einvoice' ),
+					'name'     => __( 'E-Invoice Settings', 'wc-paynow-einvoice' ),
 					'type'     => 'title',
 					'desc'     => '',
 					'id'       => 'wc_settings_tab_demo_section_title'
 				),
 				'active_paynow_einvoice' => array(
-					'name' => __( 'Enable', 'paynow-einvoice' ),
+					'name' => __( 'Enable', 'wc-paynow-einvoice' ),
 					'type' => 'checkbox',
 					'desc' => '',
 					'id'   => 'wc_settings_tab_active_paynow_einvoice'
 				),
 				'paynow_einvoice_sandbox' => array(
-					'name' => __( 'Test Mode', 'paynow-einvoice' ),
+					'name' => __( 'Test Mode', 'wc-paynow-einvoice' ),
 					'type' => 'checkbox',
 					'desc' => '',
 					'id'   => 'wc_settings_tab_paynow_einvoice_sandbox'
 				),
 				'paynow_debug_log' => array(
-					'name'       => __('Debug Log', 'paynow-einvoice'),
+					'name'       => __( 'Debug Log', 'wc-paynow-einvoice' ),
 					'type'        => 'checkbox',
-					'label'       => __('Enable Logging', 'paynow-einvoice'),
+					'label'       => __( 'Enable Logging', 'wc-paynow-einvoice' ),
 					'default'     => 'no',
-					'desc' => sprintf(__('Log PayNow E-Invoice message, inside <code>%s</code>', 'paynow-einvoice'), wc_get_log_file_path('paynow-einvoice')),
+					'desc' => sprintf( __( 'Log PayNow E-Invoice message, inside <code>%s</code>', 'wc-paynow-einvoice' ), wc_get_log_file_path( 'wc-paynow-einvoice' )),
 					'id'          => 'paynow_einvoice_debug_log_enabled'
 				),
 				'mem_cid' => array(
-					'name' => __( 'Merchant ID', 'paynow-einvoice' ),
+					'name' => __( 'Merchant ID', 'wc-paynow-einvoice' ),
 					'type' => 'text',
 					'desc' => '',
 					'id'   => 'wc_settings_tab_mem_cid'
 				),
 				'mem_password' => array(
-					'name' => __( 'Merchant Password', 'paynow-einvoice' ),
+					'name' => __( 'Merchant Password', 'wc-paynow-einvoice' ),
 					'type' => 'text',
 					'desc' => '',
 					'id'   => 'wc_settings_tab_mem_password'
 				),
 				'issue_mode' => array(
-					'name' => __( 'Issue Mode', 'paynow-einvoice' ),
+					'name' => __( 'Issue Mode', 'wc-paynow-einvoice' ),
 					'type' => 'radio',
 					'desc' => __('You can issue the e-invoice manually even if you choose Automatic mode'),
 					'desc_tip' => true,
 					'id'   => 'wc_settings_tab_issue_mode',
 					'options' => array(
-						'auto'=> __( 'Automatic', 'paynow-einvoice'),
-						'manual' => __( 'Manual', 'paynow-einvoice'),
+						'auto'   => __( 'Automatic', 'wc-paynow-einvoice' ),
+						'manual' => __( 'Manual', 'wc-paynow-einvoice' ),
 					),
 					'default' => 'auto'
 				),
 				'issue_at' => array(
-					'name' => __( 'Allowed Order Status', 'paynow-einvoice' ),
+					'name' => __( 'Allowed Order Status', 'wc-paynow-einvoice' ),
 					'type' => 'select',
 					'class'=> 'wc-enhanced-select',
 					'desc' => __('When order status changes to the status, the e-invoice will be issued automatically.'),
@@ -132,7 +132,7 @@ class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
 					'options' => self::ww_get_order_status()
 				),
 				'tax_type' => array(
-					'name' => __( 'Tax Type', 'paynow-einvoice' ),
+					'name' => __( 'Tax Type', 'wc-paynow-einvoice' ),
 					'type' => 'select',
 					'desc' => __('When input the product price, please input the price with tax-included.'),
 					'desc_tip' => true,
@@ -145,22 +145,22 @@ class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
 					'id'   => 'wc_settings_tab_tax_type',
 				),
 				'carrier_type' => array(
-					'name' => __( 'Carrier Type', 'paynow-einvoice' ),
+					'name' => __( 'Carrier Type', 'wc-paynow-einvoice' ),
 					'type' => 'checkbox',
-					'desc'    => __( 'Mobile Code', 'paynow-einvoice' ),
+					'desc'    => __( 'Mobile Code', 'wc-paynow-einvoice' ),
 					'default' => 'yes',
 					'id'   => 'wc_settings_tab_carrier_type_mobile_code',
 					'checkboxgroup' => 'start',
 				),
 				array(
-					'desc'            => __( 'Citizen Digital Certificate', 'paynow-einvoice' ),
+					'desc'            => __( 'Citizen Digital Certificate', 'wc-paynow-einvoice' ),
 					'id'              => 'wc_settings_tab_carrier_type_cdc_code',
 					'default'         => 'yes',
 					'type'            => 'checkbox',
 					'checkboxgroup'   => '',
 				),
 				array(
-					'desc'            => __( 'Easy Card', 'paynow-einvoice' ),
+					'desc'            => __( 'Easy Card', 'wc-paynow-einvoice' ),
 					'id'              => 'wc_settings_tab_carrier_type_easycard_code',
 					'default'         => 'yes',
 					'type'            => 'checkbox',
@@ -174,7 +174,7 @@ class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
 				// 	'checkboxgroup'   => '',
 				// ),
 				'donate_org' => array(
-					'name' => __( 'Donated Organization', 'paynow-einvoice' ),
+					'name' => __( 'Donated Organization', 'wc-paynow-einvoice' ),
 					'type' => 'textarea',
 					'desc' => '輸入捐增機構(每行一筆)，格式為：愛心碼|社福團體名稱',
 					'desc_tip' => true,
@@ -204,7 +204,7 @@ class WC_Settings_Tab_PayNow_EInvoice extends WC_Settings_Page {
 			return;
 		}
 
-		if ( is_plugin_active( 'tw-paynow-payment/paynow-payment.php' ) || is_plugin_active( 'tw-paynow-shipping/paynow-shipping.php' ) ) {
+		if ( is_plugin_active( 'wc-paynow-payment/wc-paynow-payment.php' ) || is_plugin_active( 'wc-paynow-shipping/wc-paynow-shipping.php' ) ) {
 			return;
 		}
 

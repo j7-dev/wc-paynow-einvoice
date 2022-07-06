@@ -35,7 +35,7 @@ class Paynow_Einvoice_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'paynow-einvoice',
+			'wc-paynow-einvoice',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
